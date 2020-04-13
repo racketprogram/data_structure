@@ -1,5 +1,7 @@
 package heap
 
+import "math"
+
 type Heap struct {
 	maxSize      int
 	currentIndex int
@@ -19,18 +21,18 @@ func (h *Heap) Insert(v int) {
 		return
 	}
 	h.array[h.currentIndex] = v
-	h.Max(h.currentIndex)
+	h.BubbleUp(h.currentIndex)
 	h.currentIndex++
 }
 
-func (h *Heap) Max(idx int) {
+func (h *Heap) BubbleUp(idx int) {
 	if idx == 0 {
 		return
 	}
 	parentIdx := (idx / 2)
 	if h.array[parentIdx] < h.array[idx] {
 		swap(&h.array[parentIdx], &h.array[idx])
-		h.Max(parentIdx)
+		h.BubbleUp(parentIdx)
 	}
 }
 
@@ -39,22 +41,22 @@ func (h *Heap) Poll() int {
 	swap(&h.array[0], &h.array[h.currentIndex-1])
 	h.array[h.currentIndex-1] = 0
 	h.currentIndex--
-	h.Min(0)
+	h.BubbleDown(0)
 	return pop
 }
 
-func (h *Heap) Min(idx int) {
+func (h *Heap) BubbleDown(idx int) {
 	child1 := (idx * 2) + 1
 	child2 := (idx * 2) + 2
 
 	c1, c2 := 0, 0
 	if child1 > h.currentIndex {
-		c1 = -9999999
+		c1 = -math.MaxInt64
 	} else {
 		c1 = h.array[child1]
 	}
 	if child2 > h.currentIndex {
-		c2 = -9999999
+		c2 = -math.MaxInt64
 	} else {
 		c2 = h.array[child2]
 	}
@@ -71,7 +73,7 @@ func (h *Heap) Min(idx int) {
 
 	if c > h.array[idx] {
 		swap(&h.array[cIndex], &h.array[idx])
-		h.Min(cIndex)
+		h.BubbleDown(cIndex)
 	}
 }
 
