@@ -1,4 +1,5 @@
 {
     "editor.codeActionsOnSave": null,
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "go.lintFlags": ["--disable=all"],
 }
