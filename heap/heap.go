@@ -25,6 +25,30 @@ func (h *Heap) Insert(v int) {
 	h.currentIndex++
 }
 
+func (h *Heap) Poll() int {
+	pop := h.array[0]
+	swap(&h.array[0], &h.array[h.currentIndex-1])
+	h.array[h.currentIndex-1] = 0
+	h.currentIndex--
+	h.BubbleDown(0)
+	return pop
+}
+
+func (h *Heap) Remove(targetValue int) {
+	var targetIndex int = -1
+	for i, v := range h.array {
+		if v == targetValue {
+			targetIndex = i
+		}
+	}
+	if targetIndex != -1 {
+		swap(&h.array[targetIndex], &h.array[h.currentIndex-1])
+		h.array[h.currentIndex-1] = 0
+		h.currentIndex--
+		h.BubbleUp(targetIndex)
+	}
+}
+
 func (h *Heap) BubbleUp(idx int) {
 	if idx == 0 {
 		return
@@ -34,15 +58,6 @@ func (h *Heap) BubbleUp(idx int) {
 		swap(&h.array[parentIdx], &h.array[idx])
 		h.BubbleUp(parentIdx)
 	}
-}
-
-func (h *Heap) Poll() int {
-	pop := h.array[0]
-	swap(&h.array[0], &h.array[h.currentIndex-1])
-	h.array[h.currentIndex-1] = 0
-	h.currentIndex--
-	h.BubbleDown(0)
-	return pop
 }
 
 func (h *Heap) BubbleDown(idx int) {
