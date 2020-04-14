@@ -12,7 +12,8 @@ func TestNewHeap(t *testing.T) {
 }
 
 func TestHeapInsert(t *testing.T) {
-	s := []int{2, 10, 5, 1, 7, 9, 3, 4, 6, 8}
+	// s := []int{2, 10, 5, 1, 7, 9, 3, 4, 6, 8}
+	s := []int{5, 1, 4, 2, 3}
 	heap := NewHeap(len(s))
 
 	for _, v := range s {

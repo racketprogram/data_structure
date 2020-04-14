@@ -1,5 +1,8 @@
 {
     "editor.codeActionsOnSave": null,
     "go.useLanguageServer": true,
-    "go.lintFlags": ["--disable=all"],
+    "go.lintFlags": [
+        "--disable=all"
+    ],
+    "go.inferGopath": false,
 }
