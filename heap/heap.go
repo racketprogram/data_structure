@@ -45,7 +45,7 @@ func (h *Heap) Remove(targetValue int) {
 		swap(&h.array[targetIndex], &h.array[h.currentIndex-1])
 		h.array[h.currentIndex-1] = 0
 		h.currentIndex--
-		h.BubbleUp(targetIndex)
+		h.BubbleDown(targetIndex)
 	}
 }
 
