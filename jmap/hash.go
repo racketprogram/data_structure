@@ -20,6 +20,7 @@ func (h *hash) stringHash(key string) int {
 	for i := 0; i < len(key); i++ {
 		n += int(key[i])
 	}
+	return h.modPowerOfTwo(n)
 }
 
 func (h *hash) modPowerOfTwo(number int) int {
