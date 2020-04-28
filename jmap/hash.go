@@ -16,12 +16,10 @@ func NewHash(hashRange int) (*hash, error) {
 }
 
 func (h *hash) stringHash(key string) int {
-	byteArray := []byte(key)
 	var n int
-	for _, v := range byteArray {
-		n += int(v)
+	for i := 0; i < len(key); i++ {
+		n += int(key[i])
 	}
-	return h.modPowerOfTwo(n)
 }
 
 func (h *hash) modPowerOfTwo(number int) int {
