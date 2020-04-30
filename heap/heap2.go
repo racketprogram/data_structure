@@ -8,15 +8,15 @@ func init() {
 }
 
 type Heap2 struct {
-	max   int
-	array []int
+	max       int
+	array     []int
 	lastIndex int
 }
 
 func NewHeap2(a []int) Heap2 {
 	return Heap2{
-		max:   256,
-		array: a,
+		max:       256,
+		array:     a,
 		lastIndex: len(a) - 1,
 	}
 }
@@ -69,8 +69,8 @@ func (h *Heap2) ValidateHeap() bool {
 }
 
 func (h *Heap2) validateHeap(i int) bool {
-	c1 := i * 2 + 1
-	c2 := i * 2 + 2
+	c1 := i*2 + 1
+	c2 := i*2 + 2
 
 	return h.compare(i, c1) && h.compare(i, c2)
 }
@@ -78,7 +78,7 @@ func (h *Heap2) validateHeap(i int) bool {
 func (h *Heap2) validateMinHeap() bool {
 	for i := h.lastIndex; i > 0; i-- {
 		value := h.array[i]
-		parent := (i-1) / 2
+		parent := (i - 1) / 2
 		parentValue := h.array[parent]
 		if parentValue > value {
 			return false
@@ -90,7 +90,7 @@ func (h *Heap2) validateMinHeap() bool {
 func validateMinHeapf(a []int) bool {
 	for i := len(a) - 1; i > 0; i-- {
 		value := a[i]
-		parent := (i-1) / 2
+		parent := (i - 1) / 2
 		parentValue := a[parent]
 		if parentValue > value {
 			return false

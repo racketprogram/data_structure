@@ -19,7 +19,7 @@ func TestNewHeap2(t *testing.T) {
 }
 
 func TestValidateHeap(t *testing.T) {
-	s := []int{1,2,3,4,5,6,7,8,9,10}
+	s := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	heap := NewHeap2(s)
 	fmt.Printf("TestValidateHeap: %+v\n", heap)
 	fmt.Printf("TestValidateHeap: %+v\n", heap.validateMinHeap())
@@ -34,7 +34,7 @@ func TestHeapQuestions(t *testing.T) {
 		{5, 1, 4, 2, 3},
 		{4, 4, 3, 1, 9, 2},
 		{100},
-		{3,3,3,3},
+		{3, 3, 3, 3},
 	}
 
 	for _, v := range s {
@@ -47,8 +47,8 @@ func TestHeapQuestions(t *testing.T) {
 }
 
 func BenchmarkValidateHeap(b *testing.B) {
-	s := []int{1,2,3,4,5,6,7,8,9,10}
-    for i := 0; i < b.N; i++ {
+	s := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	for i := 0; i < b.N; i++ {
 		validateMinHeapf(s)
-    }
+	}
 }

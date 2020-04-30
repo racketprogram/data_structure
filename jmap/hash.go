@@ -10,7 +10,7 @@ func NewHash(hashRange int) (*hash, error) {
 	if !isPowerOfTwo(hashRange) {
 		return nil, fmt.Errorf("not power of two")
 	}
-	return &hash {
+	return &hash{
 		hashRange: hashRange,
 	}, nil
 }
