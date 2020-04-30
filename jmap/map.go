@@ -2,7 +2,7 @@ package jmap
 
 type jmap struct {
 	s []string
-	h hash
+	h *hash
 }
 
 func NewJmap(size int) (*jmap, error) {
@@ -14,5 +14,5 @@ func NewJmap(size int) (*jmap, error) {
 	return &jmap{
 		s: make([]string, 0, size),
 		h: h,
-	}
+	}, nil
 }
